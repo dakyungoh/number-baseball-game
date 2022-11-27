@@ -1,5 +1,5 @@
 // TODO: 나중에 정답을 생성하는 함수 만들자. 지금은 임시로 3, 6, 9로 해놓는다.
-const correctAnswer = [3, 6, 9];
+const correctAnswer = "369";
 
 // 실행버튼을 누르면 UI 인풋에 입력된 숫자를 받아와서 숫자야구 로직으로 검사합니다.
 function onClickPlay() {
@@ -8,8 +8,7 @@ function onClickPlay() {
     alert("값이 유효하지 않습니다. 숫자 3개를 입력해주세요.");
     return;
   }
-  const numbers = inputStr.split("").map((c) => parseInt(c));
-  getResult(numbers);
+  getResult(inputStr);
 }
 
 // UI 인풋에 입력된 숫자를 받아온다.
@@ -37,9 +36,12 @@ function isValid(str) {
 function getResult(numbers) {
   // 스트라이크의 수를 센다.
   const strikes = getStrikes(numbers);
+  const balls = getBalls(numbers);
   console.log("strikes:", strikes);
+  console.log("balls:", balls);
 }
 
+// 스트라이크 수를 센다.
 function getStrikes(numbers) {
   let strikes = 0;
   for (let i = 0; i < 3; i++) {
@@ -50,4 +52,17 @@ function getStrikes(numbers) {
     }
   }
   return strikes;
+}
+
+// 볼 수를 센다.
+function getBalls(numbers) {
+  let balls = 0;
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      if (i !== j && numbers[i] === correctAnswer[j]) {
+        balls = balls + 1;
+      }
+    }
+  }
+  return balls;
 }
