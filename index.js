@@ -3,7 +3,10 @@ function onClickPlay() {
   const inputStr = getInputStr();
   if (!isValid(inputStr)) {
     alert("값이 유효하지 않습니다. 숫자 3개를 입력해주세요.");
+    return;
   }
+  const numbers = inputStr.split("").map((c) => parseInt(c));
+  console.log(numbers);
 }
 
 // UI 인풋에 입력된 숫자를 받아온다.
