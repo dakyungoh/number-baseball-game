@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  background-color: rgb(223, 243, 215);
 }
 
 #title {
@@ -34,4 +35,12 @@ td {
   text-align: center;
   padding: 5px;
   border: 1px solid grey;
+}
+
+#kong-image {
+  width: 300px;
+  border-radius: 100%;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
 }
