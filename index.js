@@ -9,7 +9,7 @@ function onClickPlay() {
     return;
   }
   const result = getResult(inputStr);
-  console.log(result);
+  addResultToUI(result);
   if (result.strikes === 3) {
     alert("정답입니다! You Win!!!");
   }
@@ -37,12 +37,13 @@ function isValid(str) {
 }
 
 // 숫자 배열로부터 스트라이크, 볼, 아웃 결과를 반환한다.
-function getResult(numbers) {
+function getResult(userAnswer) {
   // 스트라이크의 수를 센다.
-  const strikes = getStrikes(numbers);
-  const balls = getBalls(numbers);
+  const strikes = getStrikes(userAnswer);
+  const balls = getBalls(userAnswer);
   const isOut = strikes + balls === 0;
   return {
+    userAnswer: userAnswer,
     strikes: strikes,
     balls: balls,
     isOut: isOut,
@@ -50,12 +51,10 @@ function getResult(numbers) {
 }
 
 // 스트라이크 수를 센다.
-function getStrikes(numbers) {
+function getStrikes(userAnswer) {
   let strikes = 0;
   for (let i = 0; i < 3; i++) {
-    const userAnswerNum = numbers[i];
-    const correctAnswerNum = correctAnswer[i];
-    if (userAnswerNum === correctAnswerNum) {
+    if (userAnswer[i] === correctAnswer[i]) {
       strikes = strikes + 1;
     }
   }
@@ -63,14 +62,28 @@ function getStrikes(numbers) {
 }
 
 // 볼 수를 센다.
-function getBalls(numbers) {
+function getBalls(userAnswer) {
   let balls = 0;
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
-      if (i !== j && numbers[i] === correctAnswer[j]) {
+      if (i !== j && userAnswer[i] === correctAnswer[j]) {
         balls = balls + 1;
       }
     }
   }
   return balls;
+}
+
+// 결과를 UI에 추가한다.
+function addResultToUI(result) {
+  console.log(result);
+  const tableElem = document.querySelector(".history-table-body");
+  tableElem.innerHTML += `
+    <tr class="history-table-result">
+        <td class="answer">${result.userAnswer}</td>
+        <td class="strike">${result.strikes}</td>
+        <td clss="ball">${result.balls}</td>
+        <td class="out">${result.isOut ? "O" : "X"}</td>
+    </tr>
+  `;
 }

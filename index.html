@@ -8,7 +8,12 @@
   <body>
     <h1 id="title">숫자 야구 게임</h1>
     <form>
-      <input id="answer-input" type="text" placeholder="숫자를 입력하세요." />
+      <input
+        id="answer-input"
+        type="text"
+        placeholder="숫자를 입력하세요."
+        value="123"
+      />
       <input
         id="answer-button"
         type="button"
@@ -17,30 +22,34 @@
       />
     </form>
     <table class="history-table">
-      <tr class="history-table-header">
-        <th>input</th>
-        <th>strike</th>
-        <th>ball</th>
-        <th>out</th>
-      </tr>
-      <tr class="history-table-result">
-        <td class="answer">123</td>
-        <td class="strike">0</td>
-        <td class="ball">1</td>
-        <td class="out">X</td>
-      </tr>
-      <tr class="history-table-result">
-        <td class="answer">311</td>
-        <td class="strike">1</td>
-        <td class="ball">0</td>
-        <td class="out">X</td>
-      </tr>
-      <tr class="history-table-result">
-        <td class="answer">248</td>
-        <td class="strike">0</td>
-        <td clss="ball">0</td>
-        <td class="out">O</td>
-      </tr>
+      <thead class="history-table-header">
+        <tr>
+          <th>input</th>
+          <th>strike</th>
+          <th>ball</th>
+          <th>out</th>
+        </tr>
+      </thead>
+      <tbody class="history-table-body">
+        <tr class="history-table-result">
+          <td class="answer">123</td>
+          <td class="strike">0</td>
+          <td class="ball">1</td>
+          <td class="out">X</td>
+        </tr>
+        <tr class="history-table-result">
+          <td class="answer">311</td>
+          <td class="strike">1</td>
+          <td class="ball">0</td>
+          <td class="out">X</td>
+        </tr>
+        <tr class="history-table-result">
+          <td class="answer">248</td>
+          <td class="strike">0</td>
+          <td clss="ball">0</td>
+          <td class="out">O</td>
+        </tr>
+      </tbody>
     </table>
   </body>
   <script src="index.js"></script>
