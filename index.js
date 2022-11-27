@@ -8,7 +8,11 @@ function onClickPlay() {
     alert("값이 유효하지 않습니다. 숫자 3개를 입력해주세요.");
     return;
   }
-  getResult(inputStr);
+  const result = getResult(inputStr);
+  console.log(result);
+  if (result.strikes === 3) {
+    alert("정답입니다! You Win!!!");
+  }
 }
 
 // UI 인풋에 입력된 숫자를 받아온다.
@@ -37,8 +41,12 @@ function getResult(numbers) {
   // 스트라이크의 수를 센다.
   const strikes = getStrikes(numbers);
   const balls = getBalls(numbers);
-  console.log("strikes:", strikes);
-  console.log("balls:", balls);
+  const isOut = strikes + balls === 0;
+  return {
+    strikes: strikes,
+    balls: balls,
+    isOut: isOut,
+  };
 }
 
 // 스트라이크 수를 센다.
