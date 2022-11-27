@@ -1,5 +1,10 @@
-// TODO: 나중에 정답을 생성하는 함수 만들자. 지금은 임시로 3, 6, 9로 해놓는다.
-const correctAnswer = "369";
+const correctAnswer = getRandomAnswer();
+
+function getRandomAnswer() {
+  const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  array.sort(() => Math.random() - 0.5);
+  return array.slice(0, 3);
+}
 
 // 실행버튼을 누르면 UI 인풋에 입력된 숫자를 받아와서 숫자야구 로직으로 검사합니다.
 function onClickPlay() {
